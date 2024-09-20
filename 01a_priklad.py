@@ -48,3 +48,16 @@ def hvezda(slovo):
     return f'{(2 * len(slovo)*'*')}\n* {slovo} *\n{(2 * len(slovo)*'*')}'
 print(hvezda('ahoj'))
     
+import re
+
+regex = re.compile(r"\d[ABCEHJKLMPSTUZ1234567890]\d \d\d\d\d")
+count = 0
+
+with open("input_file.txt", encoding="utf-8") as input_file:
+    for line in input_file:
+        line = line.strip()
+        if regex.match(line):
+            print(f"Line \"{line}\" contains license plate.")
+            count += 1
+
+print(f"Count: {count}")
